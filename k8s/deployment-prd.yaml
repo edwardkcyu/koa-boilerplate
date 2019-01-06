@@ -1,0 +1,44 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: koa-boilerplate-prd
+  labels:
+    app: koa-boilerplate-prd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: koa-boilerplate-prd
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: koa-boilerplate-prd
+    spec:
+      containers:
+      - name: koa-boilerplate-prd-container
+        image: adsmanager.azurecr.io/koa-boilerplate:1.0.0
+        imagePullPolicy: Always
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "3000"
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: koa-boilerplate
+spec:
+  selector:
+    app: koa-boilerplate-prd
+  type: ClusterIP
+  ports:
+    - port: 3000
+  

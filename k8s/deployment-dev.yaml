@@ -1,0 +1,46 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: koa-boilerplate-dev
+  labels:
+    app: koa-boilerplate-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: koa-boilerplate-dev
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: koa-boilerplate-dev
+    spec:
+      containers:
+      - name: koa-boilerplate-dev-container
+        image: koa-boilerplate:1.0.0
+        imagePullPolicy: Always
+        env:
+        - name: NODE_ENV
+          value: "development"
+        - name: PORT
+          value: "3000"
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+        - name: acr-cred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: koa-boilerplate
+spec:
+  selector:
+    app: koa-boilerplate-dev
+  type: ClusterIP
+  ports:
+    - port: 3000
+  
