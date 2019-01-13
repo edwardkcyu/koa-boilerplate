@@ -10,11 +10,11 @@ module.exports = async (ctx, next) => {
       const { status, message } = e;
 
       ctx.status = status;
-      ctx.body = { message };
+      ctx.body = { error: { message } };
     } else {
       ctx.status = HTTP_STATUS.SERVER_ERROR;
       ctx.body = {
-        message: 'Server error'
+        error: { message: 'Server error' }
       };
     }
   });

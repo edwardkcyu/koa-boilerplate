@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`formatDate format date correctly 1`] = `"2018-01-01 11:11:11"`;
+
+exports[`formatDate throw error if input is null 1`] = `"date should not be null"`;

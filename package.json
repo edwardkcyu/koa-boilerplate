@@ -1,9 +1,9 @@
 {
   "name": "koa-boilerplate",
   "version": "1.0.0",
-  "description": "Group all Koa releated best practices in this project",
+  "description": "Node.js releated best practices, demonstrated using Koa framework",
   "author": "Edward YU <edwardkcyu@gmail.com>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -12,12 +12,11 @@
     "debug:jest": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "lint": "eslint src",
     "docker:build": "docker build -t edwardkcyu/koa-boilerplate:1.0.0 .",
-    "docker:push": "docker push aedwardkcyu/koa-boilerplate:1.0.0",
-    "test": "jest",
-    "test:postman": "newman run test/postman/koa-boilerplate.postman_collection.json -e test/postman/env/local.json"
+    "docker:push": "docker push edwardkcyu/koa-boilerplate:1.0.0",
+    "test:unit": "jest unit",
+    "test:e2e": "newman run test/e2e/koa-boilerplate.postman_collection.json -e test/e2e/env/local.json"
    },
   "dependencies": {
-    "axios": "^0.18.0",
     "dotenv": "^5.0.1",
     "http-shutdown": "^1.2.0",
     "kcors": "^2.2.1",
@@ -41,10 +40,8 @@
     "prettier": "^1.12.1"
   },
   "jest": {
-    "testEnvironment": "node",
-    "testMatch": [
-      "**/test/**/*.test.js"
-    ]
+    "testEnvironment": "node"
+    
   },
   "husky": {
     "hooks": {

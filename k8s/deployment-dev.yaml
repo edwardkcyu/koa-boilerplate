@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: koa-boilerplate-dev-container
-        image: koa-boilerplate:1.0.0
+        image: edwardkcyu/koa-boilerplate:1.0.0
         imagePullPolicy: Always
         env:
         - name: NODE_ENV
@@ -30,8 +30,6 @@ spec:
           value: "3000"
         ports:
         - containerPort: 3000
-      imagePullSecrets:
-        - name: acr-cred
 ---
 apiVersion: v1
 kind: Service

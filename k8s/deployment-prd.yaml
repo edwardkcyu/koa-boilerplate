@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: koa-boilerplate-prd-container
-        image: adsmanager.azurecr.io/koa-boilerplate:1.0.0
+        image: edwardkcyu/koa-boilerplate:1.0.0
         imagePullPolicy: Always
         env:
         - name: NODE_ENV

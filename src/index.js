@@ -1,18 +1,14 @@
 require('dotenv').config();
 
 const logger = require('./lib/logger');
-require('./lib/mongo');
 
-const {
-  server: { port }
-} = require('./config');
+const { port } = require('./config');
 
 const app = require('./app');
 
 process.once('SIGINT', () => app.shutDown());
 process.once('SIGTERM', () => app.shutDown());
 
-// app.server.listen(port, host);
 app.server.listen(port);
 
 const onError = function(error) {

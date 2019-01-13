@@ -23,12 +23,7 @@ const normalizePort = val => {
 };
 
 const config = {
-  server: {
-    port: normalizePort(_.defaultTo(process.env.PORT, 3000)),
-    host: _.defaultTo(process.env.HOST, 'localhost'),
-    root: ROOT,
-    data: path.join(ROOT, '../', '/data')
-  },
+  port: normalizePort(_.defaultTo(process.env.PORT, 3000)),
 
   env: {
     isDev,
